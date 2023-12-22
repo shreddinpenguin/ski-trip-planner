@@ -3,8 +3,7 @@
 # Standard library imports
 
 # Remote library imports
-from flask import request, make_response, jsonify, session
-from flask_restful import Resource
+from flask import request, make_response, session
 # Local imports
 from config import app, db, api
 # Add your model imports
@@ -109,7 +108,7 @@ def trip_by_id(id):
             db.session.commit()
         except Exception as e:
             return make_response({"errors": ["validation errors"]}, 400)
-        return make_response(trip.to_dict(only=('id', 'user', 'destination')), 202)
+        return make_response(trip.to_dict(only=('id', 'destination')), 202)
     elif request.method == 'DELETE':
         db.session.delete(trip)
         db.session.commit()

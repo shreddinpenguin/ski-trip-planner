@@ -23,12 +23,15 @@ export default function TripCard({ trip, setTrips }) {
             body: JSON.stringify({"trip_name": tripName})
         })
         .then(res => res.json())
-        .then(data => setTripName(data))
+        .then(data => {
+            console.log(data)
+            setTripName(data.trips.filter((trip) => trip.id !== id));
+        })
         .then(setEdit(!edit))
     })
     const onEdit = ((e) => {
         setEdit(!edit)
-        setTripName(e.target.value)
+        // setTripName(e.target.value)
 
     })
 
