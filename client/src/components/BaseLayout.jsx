@@ -2,12 +2,11 @@ import { Outlet, Link } from 'react-router-dom'
 import NavBar from './NavBar';
 
 
-function BaseLayout({ setIsSort }) {
+function BaseLayout({ handleLogout }) {
   return (
-    <div>
+    <div className='bg-inherit'>
         <header>
-            <h1>Ski Colorado</h1>
-            <NavBar />
+            <NavBar handleLogout={handleLogout}/>
         </header>
         <main>
             <Outlet />
